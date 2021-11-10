@@ -26,7 +26,7 @@ class CoursesController < ApplicationController
   # POST /courses or /courses.json
   def create
     @course = current_user.courses.build(course_params)
-    redirect_to @course and return if @course.save
+    redirect_to root_path and return if @course.save
     render :new
   end
 

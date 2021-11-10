@@ -29,6 +29,7 @@ gem 'friendly_id', '~> 5.4', '>= 5.4.2'
 gem 'bootstrap', '~> 5.1', '>= 5.1.3'
 gem 'jquery-rails'
 gem 'devise', '~> 4.8'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
 
 
 # Reduces boot times through caching; required in config/boot.rb
