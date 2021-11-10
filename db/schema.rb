@@ -45,7 +45,6 @@ ActiveRecord::Schema.define(version: 2021_11_10_110210) do
     t.string "city"
     t.string "school_name"
     t.string "status"
-    t.string "serie_bac"
     t.string "gender"
     t.string "contact", default: "", null: false
     t.string "role"

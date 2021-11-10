@@ -40,7 +40,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.1]
       t.string :city
       t.string :school_name
       t.string :status
-      t.string :serie_bac
       t.string :gender
       t.string :contact , unique: true, null: false, default: ""
       t.string :role
