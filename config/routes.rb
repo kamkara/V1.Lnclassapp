@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :materials
+  resources :levels
   root to:'home#index'
   get 'home/show'
   
