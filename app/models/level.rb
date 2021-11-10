@@ -1,6 +1,6 @@
 class Level < ApplicationRecord
   belongs_to :user
-  #has_many :courses
+  has_many :courses
   #has_many :classrooms 
 
   validates :title,

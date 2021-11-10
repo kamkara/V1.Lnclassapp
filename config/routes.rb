@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  resources :courses
   resources :materials
   resources :levels
   root to:'home#index'
   get 'home/show'
+  get "lesson", to:'courses#new'
   
   ######### USER DATA #########
   devise_scope :user do

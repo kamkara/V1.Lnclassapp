@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def index
     @materials = Material.all.order('created_at desc')
     #@courses   = Course.all.order('created_at desc')
-    #@feed_courses   = Course.all.order('created_at desc')
+    @feed_courses   = Course.all.order('created_at desc')
   end
   def show
   end
