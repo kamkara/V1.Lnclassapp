@@ -17,3 +17,6 @@ ActiveStorage.start()
 //= require jquery3
 //= require popper
 //= require bootstrap
+
+
+import "stylesheets/application" // Add this line
