@@ -1,0 +1,26 @@
+
+<div class="container">
+  <div class="m-8">
+    <%= form_with(model: school) do |form| %>
+      <% if school.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(school.errors.count, "error") %> prohibited this school from being saved:</h2>
+
+          <ul>
+            <% school.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.text_field :name, class:"p-2 rounded-md border-2", placeholder:"Nom d'etablissement..." %>
+      </div>
+      <div class="actions">
+        <%= form.submit "", class:"bg-blue-200 p-2 text-md font-semibold" %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :classrooms
+  resources :schools
+  get "classrooms", to:"classrooms#index"
   get "espace_enseignant", to:'dashboard#index'
   resources :courses
   resources :materials
