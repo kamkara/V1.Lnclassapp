@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :questions
   get "classrooms", to:"classrooms#index"
   get "espace_enseignant", to:'dashboard#index'
   root to:'home#index'
