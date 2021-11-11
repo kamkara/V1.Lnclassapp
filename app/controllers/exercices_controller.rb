@@ -13,7 +13,7 @@ class ExercicesController < ApplicationController
 
   # GET /exercices/new
   def new
-    @classroom = Classroom.friendly.find(params[:classroom_id])
+    @classroom = Classroom.friendly.find(params[:classroom_id])#finder classroom_id
     @exercice = @classroom.exercices.build()
   end
 
@@ -23,9 +23,8 @@ class ExercicesController < ApplicationController
 
   # POST /exercices or /exercices.json
   def create
-    #@exercice.user_id = current_user.id
     @exercice = current_user.exercices.build(exercice_params)
-    redirect_to exercices_path classroom_exercices_path and return if @exercice.save#new_exercice_question_path(@exercice)
+    redirect_to new_exercice_question_path(@exercice) and return if @exercice.save
     render :new
   end
 

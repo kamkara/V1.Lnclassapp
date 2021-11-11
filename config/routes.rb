@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :questions
+  
   get "classrooms", to:"classrooms#index"
   get "espace_enseignant", to:'dashboard#index'
   root to:'home#index'
@@ -10,12 +10,19 @@ Rails.application.routes.draw do
   resources :classrooms, only: [:index, :new, :create, :show] do
     resources :exercices, only: [:new, :create, :show]
   end
-  resources :exercices
-  resources :classrooms
-  resources :schools
-  resources :courses
-  resources :materials
-  resources :levels
+
+  resources :exercices, except: [:new, :show, :edit, :create, :update, :destroy, :index] do
+    member do
+      delete 'delete', to: 'exercices#destroy'
+      post '/publish', to: 'exercices#publish'
+    end
+    resources :questions, only: [:new, :create, :destroy]
+    #resources :results, only: [:new, :create]
+  end
+
+
+  resources :exercices, :classrooms, :schools, :materials, :courses, :levels,  :questions
+
   ######### USER DATA #########
   devise_scope :user do
     get 'profile/edit'    => 'devise/registrations#edit',   :as => :edit_user_registration
