@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_11_123221) do
+ActiveRecord::Schema.define(version: 2021_11_11_165511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -54,6 +54,15 @@ ActiveRecord::Schema.define(version: 2021_11_11_123221) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "classroom_admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "classroom_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["classroom_id"], name: "index_classroom_admins_on_classroom_id"
+    t.index ["user_id"], name: "index_classroom_admins_on_user_id"
+  end
+
   create_table "classrooms", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -65,6 +74,16 @@ ActiveRecord::Schema.define(version: 2021_11_11_123221) do
     t.index ["level_id"], name: "index_classrooms_on_level_id"
     t.index ["school_id"], name: "index_classrooms_on_school_id"
     t.index ["user_id"], name: "index_classrooms_on_user_id"
+  end
+
+  create_table "classrooms_exercices", id: false, force: :cascade do |t|
+    t.uuid "classroom_id", null: false
+    t.uuid "exercice_id", null: false
+  end
+
+  create_table "classrooms_users", id: false, force: :cascade do |t|
+    t.uuid "classroom_id", null: false
+    t.uuid "user_id", null: false
   end
 
   create_table "courses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -164,6 +183,8 @@ ActiveRecord::Schema.define(version: 2021_11_11_123221) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "classroom_admins", "classrooms"
+  add_foreign_key "classroom_admins", "users"
   add_foreign_key "classrooms", "levels"
   add_foreign_key "classrooms", "schools"
   add_foreign_key "classrooms", "users"
