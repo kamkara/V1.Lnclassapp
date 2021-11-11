@@ -1,4 +1,5 @@
 class ExercicesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_exercice, only: %i[ show edit update destroy ]
 
   # GET /exercices or /exercices.json
@@ -12,7 +13,8 @@ class ExercicesController < ApplicationController
 
   # GET /exercices/new
   def new
-    @exercice = Exercice.new
+    @classroom = Classroom.friendly.find(params[:classroom_id])
+    @exercice = @classroom.exercices.build()
   end
 
   # GET /exercices/1/edit
@@ -21,17 +23,18 @@ class ExercicesController < ApplicationController
 
   # POST /exercices or /exercices.json
   def create
-    @exercice = Exercice.new(exercice_params)
+    #@exercice.user_id = current_user.id
+    @exercice = current_user.exercices.build(exercice_params)
+    redirect_to exercices_path classroom_exercices_path and return if @exercice.save#new_exercice_question_path(@exercice)
+    render :new
+  end
 
-    respond_to do |format|
-      if @exercice.save
-        format.html { redirect_to @exercice, notice: "Exercice was successfully created." }
-        format.json { render :show, status: :created, location: @exercice }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @exercice.errors, status: :unprocessable_entity }
-      end
-    end
+  def publish
+    @exercice = Exercice.friendly.find(params[:id])
+    redirect_to classroom_path(@exercice.classroom) and return if @exercice.update(published: true)
+        
+    flash.notice << [@exercice.errors.full_messages]
+    redirect_back fallback_location: "/"
   end
 
   # PATCH/PUT /exercices/1 or /exercices/1.json
@@ -48,18 +51,16 @@ class ExercicesController < ApplicationController
   end
 
   # DELETE /exercices/1 or /exercices/1.json
+  # DELETE /exercices/1 or /exercices/1.json
   def destroy
     @exercice.destroy
-    respond_to do |format|
-      format.html { redirect_to exercices_url, notice: "Exercice was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to classroom_path(@exercice.classroom)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_exercice
-      @exercice = Exercice.find(params[:id])
+      @exercice = Exercice.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

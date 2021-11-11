@@ -1,16 +1,20 @@
 Rails.application.routes.draw do
-  resources :exercices
-  resources :classrooms
-  resources :schools
   get "classrooms", to:"classrooms#index"
   get "espace_enseignant", to:'dashboard#index'
-  resources :courses
-  resources :materials
-  resources :levels
   root to:'home#index'
   get 'home/show'
   get "lesson", to:'courses#new'
   
+  
+  resources :classrooms, only: [:index, :new, :create, :show] do
+    resources :exercices, only: [:new, :create, :show]
+  end
+  resources :exercices
+  resources :classrooms
+  resources :schools
+  resources :courses
+  resources :materials
+  resources :levels
   ######### USER DATA #########
   devise_scope :user do
     get 'profile/edit'    => 'devise/registrations#edit',   :as => :edit_user_registration

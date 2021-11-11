@@ -2,6 +2,7 @@ class Classroom < ApplicationRecord
   belongs_to :level
   belongs_to :school
   belongs_to :user
+  has_many :exercices, dependent: :destroy
   
   validates :name, 
             :slug, 
