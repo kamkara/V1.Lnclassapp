@@ -29,7 +29,7 @@ class ClassroomsController < ApplicationController
 
     respond_to do |format|
       if @classroom.save
-        format.html { redirect_to @classroom, notice: "Classroom was successfully created." }
+        format.html { redirect_to classrooms_path, notice: "Classroom was successfully created." }
         format.json { render :show, status: :created, location: @classroom }
       else
         format.html { render :new, status: :unprocessable_entity }
