@@ -1,16 +1,24 @@
 class Classroom < ApplicationRecord
+  ############## RELATIONS  #############
   belongs_to :level
   belongs_to :school
   belongs_to :user
-  has_many :exercices, dependent: :destroy
-  
-  validates :name, 
-            :slug, 
-            :user_id, 
-            :school_id,
-            :level_id,  presence: true #:school_name_id,
- 
- #SLUG
+  has_many :exercices,
+            dependent: :destroy
+  has_one :classroom_admin,
+          dependent: :delete# d'abord une classe a un admin
+
+############## VALIDADTIONS  #############
+
+validates_with ClassroomValidator
+validates :name, 
+:slug, 
+:user_id, 
+:school_id,
+:level_id,  presence: true
+
+
+############## SLUG #############
   extend FriendlyId
   friendly_id :slugged_custom, use: :slugged
 
