@@ -1,5 +1,9 @@
 class ClassroomsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_classroom, only: %i[ show edit update destroy ]
+  before_action :find_levels
+  before_action :find_schools
+
 
   # GET /classrooms or /classrooms.json
   def index
@@ -21,7 +25,7 @@ class ClassroomsController < ApplicationController
 
   # POST /classrooms or /classrooms.json
   def create
-    @classroom = Classroom.new(classroom_params)
+    @classroom = current_user.classrooms.build(classroom_params)
 
     respond_to do |format|
       if @classroom.save
@@ -59,7 +63,15 @@ class ClassroomsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_classroom
-      @classroom = Classroom.find(params[:id])
+      @classroom = Classroom.friendly.find(params[:id])
+    end
+
+    def find_levels
+      @levels = Level.all
+    end
+
+    def find_schools
+      @schools = School.all
     end
 
     # Only allow a list of trusted parameters through.
