@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "espace_enseignant", to:'dashboard#index'
   resources :courses
   resources :materials
   resources :levels
