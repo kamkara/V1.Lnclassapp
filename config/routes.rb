@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :exercices
   resources :classrooms
   resources :schools
   get "classrooms", to:"classrooms#index"
