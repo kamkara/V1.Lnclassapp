@@ -18,7 +18,6 @@ ActiveStorage.start()
 //= require popper
 //= require bootstrap
 
-
 import "stylesheets/application" // Add this line
 require("trix")
 require("@rails/actiontext")

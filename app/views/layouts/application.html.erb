@@ -22,8 +22,7 @@
   </head>
 
   <body class="bg-gray-100">
-   <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
+   <%= render 'shared/flash_notice' %> 
     <%= yield %>
    
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>

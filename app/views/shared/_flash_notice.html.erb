@@ -1,10 +1,9 @@
-<% if flash[:notice] %>
-    <section class="errors-block error-border">
-        <ul>
-            <% flash[:notice].each do |m| %>
-                <%= m %>
-            <% end %>
-        </ul>
-    </section>
-<% end %>
 
+<div class="container">
+  <% flash.each do |type, msg| %>
+    <div class="alert-<%= bootstrap_class_for_flash(type) %> alert-dismissable fade show">
+      <%= msg %>
+      <button class="close" data-dismiss="alert">x</button>
+    </div>
+  <% end %> 
+</div>
