@@ -1,7 +1,8 @@
 
 <% @title="Connexion" %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
- <%= render "devise/shared/error_messages", resource: resource %>
+ <%= render 'shared/validation_errors', :record => resource %>
+        <%= render 'shared/flash_notice' %>
 <!-- component -->
 <div class="h-screen px-8 bg-white flex flex-col space-y-10 justify-center items-center">
   <!-- lnclass logo -->
@@ -18,7 +19,7 @@
      <%= link_to  "S'Inscrire rapidement", new_user_registration_path, class:"text-blue-700 font-medium" %> 
      </p> 
     <div class="space-y-5 mt-2">
-       <%= f.text_field :logged, class:"w-full h-12 border border-gray-800 rounded px-3",placeholder:"Matricule ou Email..."  %>
+       <%= f.text_field :logged, class:"w-full h-12 border border-gray-800 rounded px-3", placeholder:"Matricule ou Email..."  %>
       <div class="w-full flex items-center  border border-gray-800 rounded my-2">
         <%= f.password_field :password ,class:"w-full h-12", placeholder:"N° WhatsApp ou Mot de passe" %> 
       </div>
