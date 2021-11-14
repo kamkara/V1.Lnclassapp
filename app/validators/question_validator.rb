@@ -19,10 +19,10 @@ class QuestionValidator < ActiveModel::Validator
         if !!record.answers.collect {|a| a.content}.uniq!
             record.errors[:question] << "A question cannot have duplicate answers."
         end
-        # question is unique for a given quiz
-        #if record.exercice.questions.any? {|q| q.content == record.content }
-            #record.errors[:question] << "This question has already been added to this quiz."
-        #end
+        # question is unique for a given exrcice
+        if record.exercice.questions.any? {|q| q.content == record.content }
+            record.errors[:question] << "This question has already been added to this quiz."
+        end
 
     end
 end

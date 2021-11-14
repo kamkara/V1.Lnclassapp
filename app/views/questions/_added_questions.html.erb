@@ -1,18 +1,21 @@
 <ol>
     <% record.questions.each do |q| %>
 
-        <div class="added-question">
-            <li>
+        <div class="border border-2 rounded-md bg-white">
+            <li class="m-2">
                 <div class="added-content">
-                    <h4><%= q.content %></h4>
+                    <h4 class="font-bold text-md my-2"><%= q.content %></h4>
                     <ul>
                         <% q.answers.each do |a| %>
-                            <li><%= a.content %><%= " -correct answer" if a.correct_answer %></li>
+                            <li class="bg-gray-500">
+                                <%= a.content %>
+                            </li>
+                            <%= " -correct answer" if a.correct_answer %>
                         <% end %>
                     </ul>
                 </div>
                 
-                <%= button_to "Remove", {action: 'destroy', exercice_id: q.exercice.id, id: q.id}, method: 'delete', class: "delete-question" %>
+                <%= button_to "Remove", {action: 'destroy', exercice_id: q.exercice.id, id: q.id}, method: 'delete', class: "delete-question border bg-red-500 rounded-md" %>
             </li>
         </div>
     <% end %>

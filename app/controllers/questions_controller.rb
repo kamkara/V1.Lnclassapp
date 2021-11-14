@@ -46,7 +46,7 @@ class QuestionsController < ApplicationController
   # DELETE /questions/1 or /questions/1.json
   def destroy
     @question = Question.find(params[:id])
-    authorize @question, :destroy?
+    #authorize @question, :destroy?
     @question.destroy
     redirect_to new_exercice_question_path(params[:exercice_id])
   end
