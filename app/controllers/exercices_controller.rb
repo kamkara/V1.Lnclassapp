@@ -15,6 +15,8 @@ class ExercicesController < ApplicationController
   def new
     @classroom = Classroom.friendly.find(params[:classroom_id])#finder classroom_id
     @exercice = @classroom.exercices.build()
+
+    
   end
 
   # GET /exercices/1/edit

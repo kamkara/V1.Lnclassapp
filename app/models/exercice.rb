@@ -2,7 +2,7 @@ class Exercice < ApplicationRecord
   scope :ready, -> { where("published == true")}
   scope :chrono, -> { order(created_at: :desc)}
    
-  #has_many :questions, dependent: :destroy
+  has_many :questions, dependent: :destroy
   belongs_to :user
   belongs_to :classroom
     #has_many :results, dependent: :delete_all
