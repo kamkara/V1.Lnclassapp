@@ -52,19 +52,7 @@ end
           end
     end
     
-    def logged_in?
-    current_user.id === session[:user_id]
-    end
-    def student
-    current_user.role == "Student"
-    end
-    def teacher
-    current_user.role == "Teacher"
-    end
-    def Team
-    current_user.role == "Teacher" || current_user.role == "Team" 
-    end
-
+    
 #USER NOTICE
     def bootstrap_class_for_flash(flash_type)
     case flash_type
