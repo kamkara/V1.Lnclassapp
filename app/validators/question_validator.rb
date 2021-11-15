@@ -24,5 +24,11 @@ class QuestionValidator < ActiveModel::Validator
             record.errors[:question] << "This question has already been added to this quiz."
         end
 
+        #je voudrais verifier la presence d'une explication
+        #if record.exercice.questions.any? { |q| q.explain_answer.present?}
+        #    record.errors[:question]  << "vous n'avez pas donner d'explication pour la question."
+        #end
+        
+
     end
 end
