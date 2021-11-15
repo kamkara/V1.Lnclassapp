@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+    #Add pundit for authorize
+    include Pundit
 
      protect_from_forgery with: :exception
     #login params
