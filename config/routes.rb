@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'enrollments/create'
+  get 'enrollments/destroy'
   get "classrooms", to:"classrooms#index"
   get "espace_enseignant", to:'dashboard#index'
   root to:'home#index'
