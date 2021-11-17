@@ -19,9 +19,9 @@
      <%= link_to  "S'Inscrire rapidement", new_user_registration_path, class:"text-blue-700 font-medium" %> 
      </p> 
     <div class="space-y-5 mt-2">
-       <%= f.text_field :logged, class:"w-full h-12 border border-gray-800 rounded px-3", placeholder:"Matricule ou Email..."  %>
+       <%= f.text_field :logged, class:"w-full h-12 border border-gray-800 rounded px-3", placeholder:"N° Matricule ou Email..."  %>
       <div class="w-full flex items-center  border border-gray-800 rounded my-2">
-        <%= f.password_field :password ,class:"w-full h-12", placeholder:"N° WhatsApp ou Mot de passe" %> 
+        <%= f.password_field :password ,class:"w-full h-12", placeholder:"N° Tel ou Mot de passe" %> 
       </div>
 
       <!-- Remember-->
@@ -32,7 +32,7 @@
         </div>
       <% end %>
     </div>
-    <%= f.submit "Se Connecter", disable_with: 'Connexion encours...', class:"text-center w-full mx-2 bg-blue-700 rounded-md text-white text-xl  py-3 font-medium" %>
+    <%= f.submit "Se Connecter", disable_with: 'Connexion encours...', class:"text-center w-full mx-2 bg-blue-500 rounded-md text-white text-xl  py-2 font-medium" %>
      
   </div>
 
