@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
      protect_from_forgery with: :exception
     #login params
     before_action :configure_permitted_parameters, if: :devise_controller?
+    before_action :find_levels
+    before_action :find_school_names
 
   protected
     # If you have extra params to permit, append them to the sanitizer.
@@ -17,4 +19,12 @@ class ApplicationController < ActionController::Base
       devise_parameter_sanitizer.permit :account_update, keys: update_sign_up_params
       devise_parameter_sanitizer.permit :sign_in, keys: [:logged, :password]
     end 
+
+    private
+    def find_levels
+      @levels = Level.all
+    end
+    def find_school_names
+      @school_names = School.all
+    end
 end
