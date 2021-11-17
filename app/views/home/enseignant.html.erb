@@ -28,20 +28,31 @@
                     <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Votre école ... </p>
                     <div class="flex mb-4">
                         <div class="flex items-center m-2 ">
-                            <%= f.select :school_name, @school_names.map{|school_name| [school_name.name, school_name.id]} %>
+                            <%= f.select :school_id, @schools.map{|school| [school.name, school.id]} %>
                         </div>
                     </div>
                     <!-- add levels -->
                     <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Votre discipline ... </p>
                     <div class="flex mb-4">
                         <div class="flex items-center m-2 ">
-                            <%= f.select :material, @levels.map{|level| [level.title, level.id]}, class:"w-8 border-2 rounded-md bg-white p-2" %>
+                            <%= f.select :material_id, @materials.map{|material| [material.title, material.id]}, class:"w-8 border-2 rounded-md bg-white p-2" %>
                         </div>
                     </div>
                     <!-- add role and city default -->
                     <%= f.hidden_field :role, value:"Teacher" %>
                     <%= f.hidden_field :city, value:"Tiassalé" %> 
+                    
 
+                    <!-- add email -->
+                    <div class="flex flex-col mb-4">
+                        <label class="mb-2 font-bold text-lg text-gray-900" for="email">Email ... </label>
+                        <%= f.email_field :email, class:"border py-2 px-3 text-grey-800", id:"email", placeholder:"Entrez votre email ..." %>
+                    </div>
+                    
+                    <div class="flex flex-col mb-4">
+                        <label class="mb-2 font-bold text-lg text-gray-900" for="password">Mot de passe ...</label>
+                        <%= f.password_field :password, class:"border py-2 px-3 text-grey-800", id:"password", placeholder:"Entrez votre mot de passe ..." %>
+                    </div>
                     <!-- add gender -->
                     <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Je suis </p>
                     <div class="w-full flex items-center justify-betwe m-4">
