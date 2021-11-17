@@ -9,25 +9,28 @@
       </div>
       <% if current_user.role == "Student" %>
         <div class="block md:hidden">
-   
           <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white" type="button" data-bs-toggle="collapse" data-bs-target="#Abonnez" aria-controls="LnNavbar" aria-expanded="false" aria-label="Toggle navigation">
           S'abonnez
             <svg class="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
           </button>
-        
-      </div>
+        </div>
       <% else %>
          <div class="block md:hidden">
-        <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white" type="button" data-bs-toggle="collapse" data-bs-target="#LnNavbar" aria-controls="LnNavbar" aria-expanded="false" aria-label="Toggle navigation">
-          <svg class="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
-        </button>
-      </div>
+          <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white" type="button" data-bs-toggle="collapse" data-bs-target="#LnNavbar" aria-controls="LnNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <svg class="h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+          </button>
+        </div>
       <% end %>
+
      <div class="block md:hidden">
       <div class="collapse navbar-collapse text-black font-bold" id="Abonnez">
         <div class="nav-item">
-         
             <span class=""> Contactez Mr. Kara au 0544320020</span>
+        </div>
+        <div class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete , class:"nav-link text-black font-bold" do %>
+            <span><i class="fas fa-sign-out-alt"></i> Déconnecter</span>
+          <% end %>
         </div>
       </div>
      </div>
