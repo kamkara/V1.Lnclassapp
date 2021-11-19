@@ -10,6 +10,8 @@ class HomeController < ApplicationController
   end
   def show
   end
+  def enseignant
+  end
 
   private
       def find_levels

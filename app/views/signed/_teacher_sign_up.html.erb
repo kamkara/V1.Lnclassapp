@@ -32,7 +32,7 @@
                     <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Votre école ... </p>
                     <div class="flex mb-4">
                         <div class="flex items-center m-2 ">
-                            <%= f.select :school_id, @schools.map{|school| [school.name, school.id]} %>
+                            <%= f.select :school_id, @school_names.map{|school_name| [school_name.name, school_name.id]} %>
                         </div>
                     </div>
                     <!-- add levels -->
