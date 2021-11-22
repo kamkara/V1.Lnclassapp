@@ -1,8 +1,7 @@
 <% exercices.each do |e| %>
-    <%= link_to classroom_exercice_path(classroom), class:"bg-red-500 my-4" do %>
+    <%= link_to classroom_exercice_path(classroom, e), class:"bg-red-500 my-4" do %>
         <section>
-            <h4 class="bg-red-200"><%= e.name %></h4>
-            
+         <h4 class="bg-red-200"><%= e.name %></h4> 
         </section>
         <hr>
     <% end %>
