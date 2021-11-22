@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   
   
   resources :classrooms, only: [:index, :new, :create, :show] do
+    
     resources :exercices, only: [:new, :create, :show]
   end
 
