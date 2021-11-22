@@ -13,7 +13,6 @@ class ClassroomsController < ApplicationController
   # GET /classrooms/1 or /classrooms/1.json
   def show
     if current_user.role == "Student"
-      @classroom = Classroom.find(params[:id])
       render :teacher_view_classroom
     end
   end
