@@ -1,4 +1,4 @@
-<%= exercices.each do |e| %>
+<% exercices.each do |e| %>
     <%= link_to classroom_exercice_path(classroom), class:"bg-red-500 my-4" do %>
         <section>
             <h4 class="bg-red-200"><%= e.name %></h4>
@@ -9,3 +9,4 @@
         <hr>
     <% end %>
 <% end %>
+

@@ -1,6 +1,6 @@
 <div class="w-full">
     <% if @classroom.exercices.count > 0 %>
-        <%= render "classrooms/display_exercices", locals: {exercices: @classroom.exercices, classroom: @classroom} %>  
+        <%= render "classrooms/show_exercices", locals: {exercices: @classroom.exercices, classroom: @classroom} %>  
     <% else %>
         <%= link_to "Créez un Exercice", new_classroom_exercice_path(@classroom) %>
     <% end %>
