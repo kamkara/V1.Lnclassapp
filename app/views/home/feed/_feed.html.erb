@@ -6,7 +6,7 @@
       <div class='flex items-center px-5 py-3'>
             <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://i.pravatar.cc/200?u=007'>
             <div class='mx-3'>
-                <p class='text-gray-600 '><b class="font-semibold"><%= course.user.full_name %></b> professeur à <b><%= course.user.school_name %></b>.</p>
+                <p class='text-gray-600 '><b class="font-semibold"><%= course.user.full_name %></b> </p>
             </div>
         </div>
 
@@ -17,7 +17,13 @@
       <!-- Course content-->
       <div class="border border-1 rounded-md m-2">
         <div class="m-2">
-          <%= course.content %>
+          <div class="" id="preview-section">
+            <%= course.content %>
+            <span class="bg-blue-200" id=start-reading>voir plus ...</span>
+          </div>
+          <div class="block hidden" id="full-section">
+            pl
+          </div>
         </div>
       </div>
       <!-- metadata -->

@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get "classrooms", to:"classrooms#index"
   get "espace_enseignant", to:'dashboard#index'
   root to:'home#index'
-  get 'home/show'
+  get "omboarding", to:'home#show'
+  get "enseignant", to:'home#enseignant'
   get "lesson", to:'courses#new'
   
   

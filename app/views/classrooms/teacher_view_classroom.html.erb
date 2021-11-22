@@ -1,7 +1,7 @@
 <div class="w-full">
-<div class="my-2">
-    <%= link_to "Créez un Exercice", new_classroom_exercice_path(@classroom) %>
-</div>
-<%= render partial: "classrooms/display_exercices", locals: {exercices: @classroom.exercices, classroom: @classroom} %>
-
+    <% if @classroom.exercices.count > 0 %>
+        <%= render "classrooms/display_exercices", locals: {exercices: @classroom.exercices, classroom: @classroom} %>  
+    <% else %>
+        <%= link_to "Créez un Exercice", new_classroom_exercice_path(@classroom) %>
+    <% end %>
 </div>

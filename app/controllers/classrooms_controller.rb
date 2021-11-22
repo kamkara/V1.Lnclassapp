@@ -9,7 +9,7 @@ class ClassroomsController < ApplicationController
   def index
     @classrooms = Classroom.all
   end
-
+  
   # GET /classrooms/1 or /classrooms/1.json
   def show
     if current_user.role == "Student"

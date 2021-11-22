@@ -9,20 +9,16 @@
                 <div class="flex justify-center items-center h-16 bg-blue-500 text-white font-semibold rounded-md">
                     <p class="  ml-2 border-2 px-1 rounded-full">Lnclass Education</p>
                 </div>
-                <h1 class="block w-full text-center text-gray-800 text-2xl font-semibold mb-4"> Inscription des élèves</h1>
+                <h1 class="block w-full text-center text-gray-800 text-2xl font-semibold mb-4"> Inscription des profeseurs partenaire</h1>
                     <div class="flex flex-col mb-4">
                         <label class="mb-2 font-bold text-lg text-gray-900" for="first_name">Nom ... </label>
                         <%= f.text_field :first_name, class:"border py-2 px-3 text-grey-800", id:"first_name", placeholder:"Entrez votre nom ..." %>
                     </div>
                     <div class="flex flex-col mb-4">
                         <label class="mb-2 font-bold text-lg text-gray-900" for="last_name">Prénom ... </label>
-                        
                         <%= f.text_field :last_name, class:"border py-2 px-3 text-grey-800", id:"last_name", placeholder:"Entrez votre prénom ..." %>
                     </div>
-                    <div class="flex flex-col mb-4">
-                        <label class="mb-2 font-bold text-lg text-gray-900" for="matricule">Nunéro Matricule ...</label>
-                        <%= f.text_field :matricule, class:"border py-2 px-3 text-grey-800", id:"matricule", placeholder:"Entrez votre matricule ..." %>
-                    </div>
+                    
                     <div class="flex flex-col mb-4">
                         <label class="mb-2 font-bold text-lg text-gray-900" for="contact">Nunéro Téléphone ...</label>
                         <%= f.text_field :contact, class:"border py-2 px-3 text-grey-800", id:"contact", placeholder:"Entrez votre contact ..." %>
@@ -36,16 +32,27 @@
                         </div>
                     </div>
                     <!-- add levels -->
-                    <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Votre niveau ... </p>
+                    <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Votre discipline ... </p>
                     <div class="flex mb-4">
                         <div class="flex items-center m-2 ">
-                            <%= f.select :level_id, @levels.map{|level| [level.title, level.id]}, class:"w-8 border-2 rounded-md bg-white p-2" %>
+                            <%= f.select :material_id, @materials.map{|material| [material.title, material.id]}, class:"w-8 border-2 rounded-md bg-white p-2" %>
                         </div>
                     </div>
                     <!-- add role and city default -->
-                    <%= f.hidden_field :role, value:"Student" %>
+                    <%= f.hidden_field :role, value:"Teacher" %>
                     <%= f.hidden_field :city, value:"Tiassalé" %> 
+                    
 
+                    <!-- add email -->
+                    <div class="flex flex-col mb-4">
+                        <label class="mb-2 font-bold text-lg text-gray-900" for="email">Email ... </label>
+                        <%= f.email_field :email, class:"border py-2 px-3 text-grey-800", id:"email", placeholder:"Entrez votre email ..." %>
+                    </div>
+                    
+                    <div class="flex flex-col mb-4">
+                        <label class="mb-2 font-bold text-lg text-gray-900" for="password">Mot de passe ...</label>
+                        <%= f.password_field :password, class:"border py-2 px-3 text-grey-800", id:"password", placeholder:"Entrez votre mot de passe ..." %>
+                    </div>
                     <!-- add gender -->
                     <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Je suis </p>
                     <div class="w-full flex items-center justify-betwe m-4">
