@@ -1,7 +1,8 @@
 class AnswseredQuestion < ApplicationRecord
   belongs_to :question
-    belongs_to :answer, optional: true
+  belongs_to :answer, optional: true
+  belongs_to :result
 
-    accepts_nested_attributes_for :answer
-    accepts_nested_attributes_for :question
+  accepts_nested_attributes_for :answer
+  accepts_nested_attributes_for :question
 end

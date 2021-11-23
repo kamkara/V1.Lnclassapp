@@ -7,13 +7,13 @@ module ClassroomsHelper
     end
 
     def unattempted_exercices(classroom, user)
-        group.exercices.ready.filter do |q| 
+        classroom.exercices.ready.filter do |q| 
             !q.results.find_by(user: user)
         end
     end
 
     def finished_exercices(classroom, user)
-        group.exercices.ready.filter do |q| 
+        classroom.exercices.ready.filter do |q| 
             q.results.find_by(user: user)
         end
     end
