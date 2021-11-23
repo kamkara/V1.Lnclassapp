@@ -1,8 +1,13 @@
-<% exercices.each do |e| %>
-    <%= link_to classroom_exercice_path(classroom, e), class:"bg-red-500 my-4" do %>
-        <section>
-         <h4 class="bg-red-200"><%= e.name %></h4> 
-        </section>
-        <hr>
+<div class="container">
+    <h1 class="text-md ">Les exercices</h1>
+    <% exercices.each do |e| %>
+        <%= link_to classroom_exercice_path(classroom, e), class:"no-underline hover:no-underline " do %>
+                <div class="w-full xl:w-2/3 md:w-1/2 ">
+                    <div class="text-black text-md bg-white font-bold border border-2 p-2">
+                        <%= e.name %>
+                    </div>
+                </div>
+        <% end %>
     <% end %>
-<% end %>
+</div>
+
