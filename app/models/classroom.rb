@@ -6,16 +6,16 @@ class Classroom < ApplicationRecord
   has_many :exercices,
             dependent: :destroy
   has_one :classroom_admin,
-          dependent: :delete# d'abord une classe a un admin
+          dependent: :delete
 
 ############## VALIDADTIONS  #############
 
 validates_with ClassroomValidator
 validates :name, 
-:slug, 
-:user_id, 
-:school_id,
-:level_id,  presence: true
+          :slug, 
+          :user_id, 
+          :school_id,
+          :level_id,  presence: true
 
 
 ############## SLUG #############
