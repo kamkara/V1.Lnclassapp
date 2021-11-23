@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'result/new'
   get 'enrollments/create'
   get 'enrollments/destroy'
   get "classrooms", to:"classrooms#index"
@@ -11,10 +12,9 @@ Rails.application.routes.draw do
   
   
   resources :classrooms, only: [:index, :new, :create, :show] do
-    
     resources :exercices, only: [:new, :create, :show]
   end
-
+  get "les_exercices", to:"exercices#index"
   resources :exercices, except: [:new, :show, :edit, :create, :update, :destroy, :index] do
     member do
       delete 'delete', to: 'exercices#destroy'

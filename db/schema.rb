@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_17_122539) do
+ActiveRecord::Schema.define(version: 2021_11_23_104424) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -171,6 +171,15 @@ ActiveRecord::Schema.define(version: 2021_11_17_122539) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
+  create_table "results", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.uuid "exercice_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["exercice_id"], name: "index_results_on_exercice_id"
+    t.index ["user_id"], name: "index_results_on_user_id"
+  end
+
   create_table "schools", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -231,5 +240,7 @@ ActiveRecord::Schema.define(version: 2021_11_17_122539) do
   add_foreign_key "materials", "users"
   add_foreign_key "questions", "exercices"
   add_foreign_key "questions", "users"
+  add_foreign_key "results", "exercices"
+  add_foreign_key "results", "users"
   add_foreign_key "schools", "users"
 end
