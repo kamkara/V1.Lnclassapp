@@ -32,7 +32,7 @@ class User < ApplicationRecord
     
   def user_is_student?
     if self.role == "Student"
-        self.email = "#{self.matricule}@gmail.com" # if email.blank? (si email est vide)
+        self.email = "#{self.matricule}@gmail.com" # if user.role == "Student"
         self.password = "#{self.contact}"      
     end    
   end

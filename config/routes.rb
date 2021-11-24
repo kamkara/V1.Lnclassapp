@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "classrooms", to:"classrooms#index"
   get "espace_enseignant", to:'dashboard#index'
   get "omboarding", to:'home#show'
-  get "enseignant", to:'home#enseignant'
+  get "inscription-enseignant", to:'home#enseignant'
   get "lesson", to:'courses#new'
   
   
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
     resources :questions, only: [:new, :create, :destroy]
     resources :results, only: [:new, :create]
   end
-
 
   resources :exercices, :classrooms, :schools, :materials, :courses, :levels,  :questions
 
