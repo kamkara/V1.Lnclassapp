@@ -130,6 +130,8 @@ ActiveRecord::Schema.define(version: 2021_11_23_104424) do
     t.index ["classroom_id"], name: "index_exercices_on_classroom_id"
     t.index ["user_id"], name: "index_exercices_on_user_id"
   end
+  
+  
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
