@@ -1,4 +1,4 @@
-<% @title="Inscription" %>
+<% @title="Inscription eleves" %>
 <div class="container mt-8 ">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
@@ -11,32 +11,32 @@
                 </div>
                 <h1 class="block w-full text-center text-gray-800 text-2xl font-semibold mb-4"> Inscription des élèves</h1>
                     <div class="flex flex-col mb-4">
-                        <label class="mb-2 font-bold text-lg text-gray-900" for="first_name">Nom ... </label>
+                        <label class="mb-2 text-lg text-gray-900" for="first_name">Nom ... </label>
                         <%= f.text_field :first_name, class:"border py-2 px-3 text-grey-800", id:"first_name", placeholder:"Entrez votre nom ..." %>
                     </div>
                     <div class="flex flex-col mb-4">
-                        <label class="mb-2 font-bold text-lg text-gray-900" for="last_name">Prénom ... </label>
+                        <label class="mb-2 text-lg text-gray-900" for="last_name">Prénom ... </label>
                         
                         <%= f.text_field :last_name, class:"border py-2 px-3 text-grey-800", id:"last_name", placeholder:"Entrez votre prénom ..." %>
                     </div>
                     <div class="flex flex-col mb-4">
-                        <label class="mb-2 font-bold text-lg text-gray-900" for="matricule">Nunéro Matricule ...</label>
+                        <label class="mb-2 text-lg text-gray-900" for="matricule">Nunéro Matricule ...</label>
                         <%= f.text_field :matricule, class:"border py-2 px-3 text-grey-800", id:"matricule", placeholder:"Entrez votre matricule ..." %>
                     </div>
                     <div class="flex flex-col mb-4">
-                        <label class="mb-2 font-bold text-lg text-gray-900" for="contact">Nunéro Téléphone ...</label>
+                        <label class="mb-2 text-lg text-gray-900" for="contact">Nunéro Téléphone ...</label>
                         <%= f.text_field :contact, class:"border py-2 px-3 text-grey-800", id:"contact", placeholder:"Entrez votre contact ..." %>
                     </div>
                                               
                     <!-- add levels -->
-                    <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Votre école ... </p>
+                    <p class=" border-b border-gray-500 py-3 px-5 text-sm mr-3">Sélectionne votre école ... </p>
                     <div class="flex mb-4">
                         <div class="flex items-center m-2 ">
                             <%= f.select :school_id, @schools.map{|school| [school.name, school.id]} %>
                         </div>
                     </div>
                     <!-- add levels -->
-                    <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Votre niveau ... </p>
+                    <p class=" border-b border-gray-500 py-3 px-5 text-sm mr-3">Sélectionne votre niveau ... </p>
                     <div class="flex mb-4">
                         <div class="flex items-center m-2 ">
                             <%= f.select :level_id, @levels.map{|level| [level.title, level.id]}, class:"w-8 border-2 rounded-md bg-white p-2" %>
@@ -47,7 +47,7 @@
                     <%= f.hidden_field :city, value:"Tiassalé" %> 
 
                     <!-- add gender -->
-                    <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Je suis </p>
+                    <p class=" border-b border-gray-500 py-3 px-5 text-sm  mr-3">Je suis ... </p>
                     <div class="w-full flex items-center justify-betwe m-4">
                         <div class='w-1/2 mx-2  radio p-1 cursor-pointer'>
                             <%= f.radio_button :gender, :Femme, class:"my-auto transform scale-125", checked: true %>
@@ -60,9 +60,9 @@
                     </div>
                    
                     <%= f.submit "Terminer inscription", class:"block bg-blue-500 hover:bg-blue-600 text-white font-bold uppercase text-lg mx-auto p-2 rounded" %>
-            <div class="mt-4">
-             Si tu as un compte <%= link_to 'connecte-toi ici.', new_user_session_path , class:"text-blue-700 font-medium" %>
-            </div>
+                <div class="mt-4">
+                Si tu as un compte <%= link_to 'connecte-toi ici.', new_user_session_path , class:"text-blue-700 font-medium" %>
+                </div>
             </div>
         </div>
     <% end %>
