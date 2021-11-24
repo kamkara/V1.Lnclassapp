@@ -1,7 +1,7 @@
 class ResultValidator < ActiveModel::Validator
     def validate(record)
-        if record.user.results.where(quiz: record.quiz).any?
-            record.errors[:name] << "You have already completed this quiz."
+        if record.user.results.where(exercice: record.exercice).any?
+            record.errors[:name] << "Vous avec déja traiter l'exercice."
         end
 
         if record.answered_questions.any? {|aq| aq.answer_id.nil?}

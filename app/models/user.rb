@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :trackable
+         :recoverable, :rememberable, :validatable, :trackable, authentication_keys:[:logged]
 
   has_many :questions
   has_many :materials
@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :schools
   has_many :classrooms
   has_many :exercices
+  has_many :results
   
   
   attr_writer :logged
@@ -19,7 +20,9 @@ class User < ApplicationRecord
   before_validation :user_is_student?
     ################## VALIDATES  ###############
    validates :first_name, :last_name, :full_name, :email, :city, :contact, :role,  presence: true
-   validates :full_name,  length: { minimum:5, message: "%{value} verifier votre nom complet"}
+   validates :full_name,presence: true,
+              format: { with: /\A[^0-9`!@#\$%\^&*+_=]+\z/ },
+              length: { minimum:5, maximum: 30,  message: "%{value} verifier votre nom complet"}
    validates :contact, uniqueness: true, length: { minimum:10, message: "%{ value} verifier votre nom numéro est 10 chiffres"}
    validates :matricule, presence: true,  uniqueness: true, length: { minimum:9, message: "%{ value} verifier votre nom matricule"}, if: :user_is_student?
    validates :role, inclusion: { in: %w(Student Teacher Team), message: "%{value} acces non identifier" }
@@ -29,7 +32,7 @@ class User < ApplicationRecord
     
   def user_is_student?
     if self.role == "Student"
-        self.email = "#{self.matricule}@gmail.com" # if email.blank? (si email est vide)
+        self.email = "#{self.matricule}@gmail.com" # if user.role == "Student"
         self.password = "#{self.contact}"      
     end    
   end

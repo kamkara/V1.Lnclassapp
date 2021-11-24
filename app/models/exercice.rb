@@ -5,8 +5,8 @@ class Exercice < ApplicationRecord
   has_many :questions, dependent: :destroy
   belongs_to :user
   belongs_to :classroom
-    #has_many :results, dependent: :delete_all
-    #has_many :notes
+  has_many :results, dependent: :delete_all
+  #has_many :notes
     
   validates_with ExerciceValidator, on: :create
   validates_with PublicationValidator, on: :update

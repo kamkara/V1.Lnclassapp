@@ -1,0 +1,8 @@
+<%= link_to(new_exercice_result_path(e), class: "quiz-link") do %>
+    <section class="quiz-block untaken">
+        <div class="block-heading">
+            <h3><%= e.name %></h3>
+        </div>
+        <p><%= e.questions.count%> Questions</p>
+    </section>
+<% end %>
