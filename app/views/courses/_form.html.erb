@@ -22,12 +22,8 @@
       <%= f.rich_text_area :content, class:" border border-2 bg-red-400 bg-white px-12 rounded-md w-full py-2 richtext", placeholder:"l'essentiel de la léçon ..." %>
     </div>
 
+      <%= f.hidden_field :material_id, value: current_user.material_id %>
   <div class="flex w-1/2 mt-2">
-    <div class="flex select w-1/2">
-      <%= f.select :material_id,
-          @materials.map { |m| [m.title, m.id] },
-          placeholder:"la matiere", hide_label: true, class:"border rounded py-2 px-3" %>
-    </div>
     <div class="flex select w-1/2 ">
        <%= f.select :level_id, @levels.map{|level| [level.title, level.id]}, class:" border rounded py-2 px-3",
         placeholder:"Série", hide_label: true %>

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'enrollments/destroy'
   get "classrooms", to:"classrooms#index"
   get "espace_enseignant", to:'dashboard#index'
-  get "omboarding", to:'home#show'
+  get "teams", to:'home#show'
   get "inscription-enseignant", to:'home#enseignant'
   get "lesson", to:'courses#new'
   
