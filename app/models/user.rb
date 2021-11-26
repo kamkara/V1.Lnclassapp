@@ -19,7 +19,7 @@ class User < ApplicationRecord
   
   ################## VALIDATES  ###############
    before_validation :user_student?
-   before_validation :user_teacher?
+   
    
    validates :first_name, :last_name, :full_name, :email, :password,
               :city, :contact, :role, presence: true
@@ -34,40 +34,25 @@ class User < ApplicationRecord
    validates :role, inclusion: { in: %w(Student Teacher Team),
                     message: "%{value} acces non identifier" }
    
-  validates :matricule, presence: true,  uniqueness: true,
-            length: { minimum:9, message: "votre nom matricule"} if :user_student?
-  validates :level_id, presence: true, length: 
-            { minimum:10, message: "votre Niveau de classe."} if :user_student?
-  validates :school_id, presence: true, length:
-            { minimum:10, message: "votre établissement manque."} if :user_student?
-            
-  validates :material_id, presence: true, length:
-            { minimum:10, message: "Votre discipline manque."} if :user_teacher?
-  validates :school_id, presence: true, length:
-            { minimum:10, message: "%{ value} Votre établissement manque."} if :user_teacher?
+  
+  
    ############# CUSTOMIZE ###############""
    
    def user_student?
     if self.role == "Student"
       self.email = "#{self.matricule}@gmail.com" # if user.role == "Student"
-      self.password = "#{self.contact}"      
+      self.password = "#{self.contact}"
+        
     end    
   end
-  def user_teacher?
-    if self.role == "Teacher"
-    end
-  end
-  
-  
+
   def full_name
     self.full_name = "#{self.first_name} #{self.last_name}" 
-  end
-  
+  end  
   
   def slug
     self.slug = self.full_name
   end
-
 
   ################## SLUG ###############
   extend FriendlyId
