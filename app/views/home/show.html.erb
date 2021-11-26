@@ -1,2 +1,62 @@
-<h1>Home#show</h1>
-<p>Find me in app/views/home/show.html.erb</p>
+<% @title="Inscription enseignant" %>
+<div class="container mt-8 ">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+            <!-- title message -->
+            <!-- component -->
+        <div class="flex justify-center items-center w-full bg-blue-300">
+            <div class=" bg-white rounded shadow-2xl p-8 m-4">
+                <div class="flex justify-center items-center h-16 bg-blue-500 text-white font-semibold rounded-md">
+                    <p class="  ml-2 border-2 px-1 rounded-full">Lnclass Education</p>
+                </div>
+                <h1 class="block w-full text-center text-gray-800 text-2xl font-semibold mb-4"> Inscription Team Member</h1>
+                    <div class="flex flex-col mb-4">
+                        <label class="mb-2  text-lg text-gray-900" for="first_name">Nom ... </label>
+                        <%= f.text_field :first_name, class:"border py-2 px-3 text-grey-800", id:"first_name", placeholder:"Entrez votre nom ..." %>
+                    </div>
+                    <div class="flex flex-col mb-4">
+                        <label class="mb-2 text-lg text-gray-900" for="last_name">Prénom ... </label>
+                        <%= f.text_field :last_name, class:"border py-2 px-3 text-grey-800", id:"last_name", placeholder:"Entrez votre prénom ..." %>
+                    </div>
+                    
+                    <div class="flex flex-col mb-4">
+                        <label class="mb-2 text-lg text-gray-900" for="contact">Nunéro Téléphone ...</label>
+                        <%= f.text_field :contact, class:"border py-2 px-3 text-grey-800", id:"contact", placeholder:"Entrez votre contact ..." %>
+                    </div>
+                    <!-- add role and city default -->
+                    
+                    <%= f.hidden_field :role, value:"Team" %>
+                    <%= f.hidden_field :city, value:"HQ LNCLASS" %> 
+                    
+
+                    <!-- add email -->
+                    <div class="flex flex-col mb-4">
+                        <label class="mb-2 font-bold text-lg text-gray-900" for="email">Email ... </label>
+                        <%= f.email_field :email, class:"border py-2 px-3 text-grey-800", id:"email", placeholder:"Entrez votre email ..." %>
+                    </div>
+                    
+                    <div class="flex flex-col mb-4">
+                        <label class="mb-2 font-bold text-lg text-gray-900" for="password">Mot de passe ...</label>
+                        <%= f.password_field :password, class:"border py-2 px-3 text-grey-800", id:"password", placeholder:"Entrez votre mot de passe ..." %>
+                    </div>
+                    <!-- add gender -->
+                    <p class=" border-b border-gray-500 py-3 px-5 text-sm font-semibold mr-3">Je suis </p>
+                    <div class="w-full flex items-center justify-betwe m-4">
+                        <div class='w-1/2 mx-2  radio p-1 cursor-pointer'>
+                            <%= f.radio_button :gender, :Femme, class:"my-auto transform scale-125", checked: true %>
+                            <label for='Femme' class="title px-2">Une femme</label>   
+                        </div>
+                        <div class='w-1/2  radio p-1 cursor-pointer'>
+                            <%= f.radio_button :gender, :Homme, class:"my-auto transform scale-125"%>
+                            <label for='homme' class="title px-2">Un homme</label>
+                        </div>
+                    </div>
+                   
+                    <%= f.submit "Terminer inscription", class:"block bg-blue-500 hover:bg-blue-600 text-white font-bold uppercase text-lg mx-auto p-2 rounded" %>
+            <div class="mt-4">
+             Si vous avez déja un compte <%= link_to 'connectez-vous ici.', new_user_session_path , class:"text-blue-700 font-medium" %>
+            </div>
+            </div>
+        </div>
+    <% end %>
+</div>

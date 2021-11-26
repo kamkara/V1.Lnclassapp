@@ -7,7 +7,9 @@
           </p>
         <% end %>
       </div>
-      <% if current_user.role == "Student" %>
+
+        <!-- Student onglets-->
+      <% if :student? %>
         <div class="block md:hidden">
           <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white" type="button" data-bs-toggle="collapse" data-bs-target="#Abonnez" aria-controls="LnNavbar" aria-expanded="false" aria-label="Toggle navigation">
           S'abonnez
@@ -40,16 +42,20 @@
             <span class=""> <i class="fa fa-home" aria-current="page"></i>Accueil</span>
           <% end %>
         </div>
+        <!-- Teacher onglets-->
+        <% if :teacher? %>
         <div class="nav-item md:ml-48">
           <%= link_to lesson_path, class:'nav-link text-black font-bold' do %>
             <span class=""><i class="fa fa-plus-circle"></i> Créations </span>  
           <% end %>
         </div>
+          
         <div class="nav-item">
           <%= link_to espace_enseignant_path, class:'nav-link text-black font-bold' do %>
             <span class=""><i class="fas fa-users"></i> Espace Professeur</span> 
           <% end %>
         </div>
+        <% end %>
         <div class="nav-item">
           <%= link_to destroy_user_session_path, method: :delete , class:"nav-link text-black font-bold" do %>
             <span><i class="fas fa-sign-out-alt"></i> Déconnecter</span>

@@ -68,4 +68,15 @@ end
       flash_type.to_s
     end
   end
+
+  def teacher?(current_user)
+    current_user.role == "Teacher"
+  end
+
+  def student?(current_user)
+     current_user.role == "Student"
+  end
+  def team?(current_user)
+    current_user.role == "Team"
+  end
 end

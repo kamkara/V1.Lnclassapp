@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   
+  root to:'welcome#index'
   #get "resultats", to:'results#new'
-  root to:'home#index'
+  get "feeds", to:'home#index'
   get 'enrollments/create'
   get 'enrollments/destroy'
   get "classrooms", to:"classrooms#index"
   get "espace_enseignant", to:'dashboard#index'
-  get "omboarding", to:'home#show'
+  get "teams", to:'home#show'
   get "inscription-enseignant", to:'home#enseignant'
   get "lesson", to:'courses#new'
   
