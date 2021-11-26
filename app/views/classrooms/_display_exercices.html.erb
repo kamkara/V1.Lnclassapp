@@ -1,14 +1,4 @@
-<<<<<<< HEAD
-<%= exercices.each do |e| %>
-    <%= link_to classroom_exercice_path(classroom), class:"bg-red-500 my-4" do %>
-        <section>
-            <h4 class="bg-red-200"><%= e.name %></h4>
-            <h4 class="bg-red-200"><%= e.slug %></h4>
-            <h4 class="bg-red-200"><%= e.exercice_id %></h4>
 
-        </section>
-        <hr>
-=======
 <div class="container">
     <h1 class="text-md">Les exercices</h1>
     <% exercices.each do |e| %>
@@ -19,6 +9,5 @@
                 </div>
             </div>
         <% end %>
->>>>>>> Develop-2
     <% end %>
 </div>
