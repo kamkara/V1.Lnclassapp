@@ -29,8 +29,9 @@ class User < ApplicationRecord
               length: { minimum:5, maximum: 30,
               message: "%{value} verifier votre nom complet"}
 
-   validates :contact, uniqueness: true, length: { minimum:10,
+   validates :contact, uniqueness: true, numericality: { only_integer: true }, length: { minimum:10,
               message: "%{ value} verifier votre nom numéro est 10 chiffres"}
+              
    validates :role, inclusion: { in: %w(Student Teacher Team),
                     message: "%{value} acces non identifier" }
    
@@ -61,6 +62,17 @@ class User < ApplicationRecord
   def should_generate_new_friendly_id?
     full_name_changed?
   end
+
+  ################## BEFORE SAVE  #########
+  before_save do
+  self.contact      = contact.strip.squeeze(" ")
+  self.first_name         = first_name.strip.squeeze(" ").downcase.capitalize
+  self.last_name          = last_name.strip.squeeze(" ").downcase.capitalize
+  self.city               = city.strip.squeeze(" ").downcase.capitalize
+end
+
+
+
 
   ################## LOGGED  #########
    
