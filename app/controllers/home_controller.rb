@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   before_action :find_materials
    
   def index  
-    @materials    = Material.all.order('created_at desc')
+    @materials = Material.all.order('created_at desc')
     if current_user.role == "Student"
       @feed_courses = Course.where('level_id = ?', current_user.level_id).order('created_at desc') and return 
     elsif current_user.role == "Teacher"
