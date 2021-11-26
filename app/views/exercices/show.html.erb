@@ -1,29 +1,8 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @exercice.name %>
-</p>
-
-<p>
-  <strong>Slug:</strong>
-  <%= @exercice.slug %>
-</p>
-
-<p>
-  <strong>Published:</strong>
-  <%= @exercice.published %>
-</p>
-
-<p>
-  <strong>Classroom:</strong>
-  <%= @exercice.classroom_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @exercice.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_exercice_path(@exercice) %> |
-<%= link_to 'Back', exercices_path %>
+<div class="container">
+  <div class="bg-white mt-2 rounded-md">
+    <div class="p-2">
+      <%= @exercice.name %>
+    </div>
+    <%= render partial: 'question_list' %>
+  </div>
+</div>

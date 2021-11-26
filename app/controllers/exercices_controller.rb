@@ -1,7 +1,7 @@
 class ExercicesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_exercice, only: %i[ show edit update destroy ]
-
+  
   # GET /exercices or /exercices.json
   def index
     @exercices = Exercice.all
@@ -9,14 +9,13 @@ class ExercicesController < ApplicationController
 
   # GET /exercices/1 or /exercices/1.json
   def show
+    
   end
 
   # GET /exercices/new
   def new
     @classroom = Classroom.friendly.find(params[:classroom_id])#finder classroom_id
-    @exercice = @classroom.exercices.build()
-
-    
+    @exercice = @classroom.exercices.build()   
   end
 
   # GET /exercices/1/edit
@@ -63,7 +62,8 @@ class ExercicesController < ApplicationController
     def set_exercice
       @exercice = Exercice.friendly.find(params[:id])
     end
-
+    
+  
     # Only allow a list of trusted parameters through.
     def exercice_params
       params.require(:exercice).permit(:name, :slug, :published, :classroom_id, :user_id)

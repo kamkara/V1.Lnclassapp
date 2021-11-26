@@ -14,10 +14,10 @@
 
   <!-- Layout  -->
   <div class="bg-white shadow-xl rounded p-2">
-    <h1 class="text-3xl font-medium">Connexion</h1>
-    <p class="text-sm">Se connecter pour accéder aux contenus ou 
-     <%= link_to  "S'Inscrire rapidement", new_user_registration_path, class:"text-blue-700 font-medium" %> 
-     </p> 
+
+    <h1 class="text-3xl font-medium ">Connexion</h1>
+    <p class="text-sm">Veuillez-vous connecter pour accéder à la plateforme. </p> 
+
     <div class="space-y-5 mt-2">
        <%= f.text_field :logged, class:"w-full h-12 border border-gray-800 rounded px-3", placeholder:"N° Matricule ou Email..."  %>
       <div class="w-full flex items-center  border border-gray-800 rounded my-2">
@@ -37,6 +37,7 @@
   </div>
 
   <!-- Footer -->
-  <p>Nouveau sur Lnclass ? <%= link_to  "S'Inscrire", new_user_registration_path, class:"text-blue-700 font-medium" %>  </p>
+  <p>Nouveau sur Lnclass ? <%= link_to  "S'Inscrire rapidement ici", new_user_registration_path, class:"text-blue-700 font-medium" %>  </p>
 </div>
 <% end %>
+

@@ -1,28 +1,29 @@
 Rails.application.routes.draw do
   
+  root to:'welcome#index'
+  #get "resultats", to:'results#new'
+  get "feeds", to:'home#index'
   get 'enrollments/create'
   get 'enrollments/destroy'
   get "classrooms", to:"classrooms#index"
   get "espace_enseignant", to:'dashboard#index'
-  root to:'home#index'
-  get "omboarding", to:'home#show'
-  get "enseignant", to:'home#enseignant'
+  get "teams", to:'home#show'
+  get "inscription-enseignant", to:'home#enseignant'
   get "lesson", to:'courses#new'
   
   
   resources :classrooms, only: [:index, :new, :create, :show] do
     resources :exercices, only: [:new, :create, :show]
   end
-
+  get "les_exercices", to:"exercices#index"
   resources :exercices, except: [:new, :show, :edit, :create, :update, :destroy, :index] do
     member do
       delete 'delete', to: 'exercices#destroy'
       post '/publish', to: 'exercices#publish'
     end
     resources :questions, only: [:new, :create, :destroy]
-    #resources :results, only: [:new, :create]
+    resources :results, only: [:new, :create]
   end
-
 
   resources :exercices, :classrooms, :schools, :materials, :courses, :levels,  :questions
 
