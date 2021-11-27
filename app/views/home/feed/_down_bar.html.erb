@@ -3,6 +3,10 @@
 </div>
 <div class="w-1/4 flex ">
     <p class="">
-        <i class="fas fa-users-class"></i> a rendre
+    <% if :students? %>
+        <i class="fas fa-users-class"></i> Traité
+    <% else %>
+        <i class="fas fa-users-class"></i> Créer exercice
+    <% end %>
     </p>
 </div>
