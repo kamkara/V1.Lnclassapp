@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   before_action :find_levels
   before_action :find_materials
+  
    
   def index  
     @materials = Material.all.order('created_at desc')
@@ -15,6 +16,7 @@ class HomeController < ApplicationController
   end
 
   def show
+    
   end
 
   def enseignant
@@ -28,4 +30,5 @@ class HomeController < ApplicationController
       def find_materials
         @materials = Material.all
       end
+      
   end

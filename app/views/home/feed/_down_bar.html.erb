@@ -1,10 +1,13 @@
-<div class="w-3/4 flex flex-wrap content-start text-sm">
-    <p class="mr-4 lg:mr-8"> <i class="fas fa-chalkboard-teacher"></i> voir exercices</p>
+
+<div class="mt-2 w-3/4 flex flex-wrap content-start text-sm">
+    <p class="mr-4 lg:mr-8"> <i class="fas fa-chalkboard-teacher"></i> 
+        <%= link_to 'Exercices', root_path %>
+    </p>
 </div>
-<div class="w-1/4 flex ">
-    <p class="">
+<div class="mt-2 w-1/4 flex ">
+    <p class="mr-4">
     <% if :students? %>
-        <i class="fas fa-users-class"></i> Traité
+        <i class="fas fa-chevron-right"></i> Traité
     <% else %>
         <i class="fas fa-users-class"></i> Créer exercice
     <% end %>
