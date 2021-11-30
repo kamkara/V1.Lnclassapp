@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   
   
   resources :courses, only: [:index, :new, :create, :show] do
-    resources :exercices, only: [:new, :create, :show]
+    resources :exercices, only: [:new, :create, :show, :index]
+    get "les_exercices", to:"exercices#index"
   end
-  get "les_exercices", to:"exercices#index"
   resources :exercices, except: [:new, :show, :edit, :create, :update, :destroy, :index] do
     member do
       delete 'delete', to: 'exercices#destroy'
