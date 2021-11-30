@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get "lesson", to:'courses#new'
   
   
-  resources :classrooms, only: [:index, :new, :create, :show] do
+  resources :courses, only: [:index, :new, :create, :show] do
     resources :exercices, only: [:new, :create, :show]
   end
   get "les_exercices", to:"exercices#index"

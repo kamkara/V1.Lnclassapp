@@ -6,6 +6,8 @@ class Course < ApplicationRecord
   belongs_to :level
   belongs_to :material
   belongs_to :user
+  has_many :exercices,
+            dependent: :destroy
   has_many_attached :contentImg
   #VALIDATIONS
   validates :title,

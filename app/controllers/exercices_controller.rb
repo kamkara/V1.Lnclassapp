@@ -14,8 +14,8 @@ class ExercicesController < ApplicationController
 
   # GET /exercices/new
   def new
-    @classroom = Classroom.friendly.find(params[:classroom_id])#finder classroom_id
-    @exercice = @classroom.exercices.build()   
+    @find_course = Course.friendly.find(params[:course_id])#finder course_id
+    @exercice = @find_course.exercices.build()   
   end
 
   # GET /exercices/1/edit
@@ -63,7 +63,6 @@ class ExercicesController < ApplicationController
       @exercice = Exercice.friendly.find(params[:id])
     end
     
-  
     # Only allow a list of trusted parameters through.
     def exercice_params
       params.require(:exercice).permit(:name, :slug, :published, :classroom_id, :user_id)
