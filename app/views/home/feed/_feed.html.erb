@@ -20,13 +20,10 @@
       <!-- Course content-->
       <div class="border border-1 rounded-md m-2">
         <div class="m-2">
-          <div class="" id="preview-section">
-            <%= course.content %>
-            <span class="bg-blue-200" id=start-reading>voir plus ...</span>
-          </div>
-          <div class="block hidden" id="full-section">
-            pl
-          </div>
+            <%= link_to course_path(course), class:"hover:text-black text-black no-underline" do %>
+              <%= truncate(strip_tags(course.content.to_s.html_safe), length: 700) %>
+              <span class="bg-blue-200 rounded-md" id=start-reading><i class="mx-2">voir plus ...</i></span>
+            <% end %>
         </div>
       </div>
       <!-- metadata -->
