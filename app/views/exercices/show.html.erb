@@ -2,8 +2,32 @@
   <div class="bg-white mt-2 rounded-md">
     <div class="p-2">
       <%= @exercice.name %> 
-      <br class="mt-2">
+      
     </div>
-    
   </div>
+</div>
+<div class="result-form">
+    <%= form_for @course, url: exercice_courses_path(@course.exercice) do |f| %>
+        <%= render 'shared/validation_errors', :record => @course %>
+        <%= f.hidden_field :exercice_id %>
+        <ol>
+            <%= f.fields_for :answered_questions do |aq| %>
+                <div class="question">
+                    <li>
+                        <%= aq.hidden_field :question_id %>
+                        <h3><%= aq.object.question.content %></h3>
+                        <%= aq.collection_radio_buttons( :answer_id, aq.object.question.answers, :id, :content) do |b| %>
+                            <div class="answer-choice">
+                                <%= b.radio_button %>
+                                <%= b.label %>
+                            </div>
+                        <% end %>
+                    </li>
+                </div>
+            <% end %>
+        </ol>
+
+        <%= f.submit "Submit Quiz" %>
+
+    <% end %>
 </div>

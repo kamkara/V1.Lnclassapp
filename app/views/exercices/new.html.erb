@@ -1,12 +1,12 @@
-<div class="container mt-2">
+<div class="w-full md:w-2/3 m-8">
     <%= form_for @exercice, url: course_exercices_path() do |f| %>
         <%= render 'shared/validation_errors', :record => @exercice %>
-        <div class="w-full">
-            <%= f.text_field :name , class:"border-2 p-2 rounded-md", placeholder:"le title de l'exercice ..." %>
+        <div class="">
+            <%= f.text_field :name , class:"border-1 p-2 rounded-md", placeholder:"le title de l'exercice ..." %>
         </div>
             <%= f.hidden_field :course_id, value: @exercice.course_id %>
-        <div class=" mt-2">
-        <%= f.submit "Créer exercice", class:"p-2 rounded-md bg-blue-400 font-bold" %>
+        <div class="mt-2">
+            <%= f.submit "Créer exercice", class:"p-2 rounded-md bg-blue-400 font-bold text-white" %>
         </div>
     <% end %>
 </div>
