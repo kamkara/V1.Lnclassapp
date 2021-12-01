@@ -11,7 +11,6 @@
     <!-- Add exercices list for medium--->
     <div class="card mt-2 md:w-2/3">
       <div class="m-2">
-        because they are not the few percent of Amazon hires who actually desire to work 14-hour days, so they don’t advance and don’t meet their goals.
-      </div>
+        <%= render partial: "courses/exercices",locals: {exercices: @course.exercices, course: @course} %>
     </div>
   </div>
