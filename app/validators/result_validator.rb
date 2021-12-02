@@ -9,3 +9,4 @@ class ResultValidator < ActiveModel::Validator
         end
     end
 end
+

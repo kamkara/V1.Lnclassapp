@@ -12,6 +12,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1 or /courses/1.json
   def show
+
   end
 
   # GET /courses/new
@@ -69,4 +70,6 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:title, :content, :slug, :level_id, :material_id, :user_id, contentImg: [])
     end
+
+  
 end
