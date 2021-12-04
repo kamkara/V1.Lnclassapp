@@ -7,7 +7,7 @@ class ResultsController < ApplicationController
     
   def create
     @result = Result.new(results_params.merge({user: current_user}))
-    redirect_to classroom_path(@result.exrcice.classroom) and return if @result.save
+    redirect_to course_path(@result.exercice.course) and return if @result.save
     render :new
   end
 

@@ -14,25 +14,25 @@
 
 
     <div class="">
-      <%= f.label :"Titre du resumé" %>
-      <%= f.text_field :title, class:" border rounded-md w-full py-2 px-3", placeholder:"le titre du contenu ..." %>
+      <%= f.label :"Titre ..." %>
+      <%= f.text_field :title, class:" border rounded-md w-full py-2 px-3", placeholder:"le contenu ..." %>
     </div>
     <div class="">
-      <%= f.label :"Resumé de la léçon ..." %>
-      <%= f.rich_text_area :content, class:" border border-2 bg-red-400 bg-white px-12 rounded-md w-full py-2 richtext", placeholder:"l'essentiel de la léçon ..." %>
+      <%= f.label :"contenu ..." %>
+      <%= f.rich_text_area :content, class:" border border-2 bg-red-400 bg-white px-12 rounded-md w-full py-2 richtext", placeholder:"Le contenu ici ..." %>
     </div>
 
       <%= f.hidden_field :material_id, value: current_user.material_id %>
+    <p class=" mt-2">Choisi le Niveau ...</p>
   <div class="flex w-1/2 mt-2">
     <div class="flex select w-1/2 ">
-       <%= f.select :level_id, @levels.map{|level| [level.title, level.id]}, class:" border rounded py-2 px-3",
-        placeholder:"Série", hide_label: true %>
-      
+       <%= f.select :level_id, @levels.map{|level| [level.title, level.id]}, class:" border-red-400 rounded py-2 px-3",
+        placeholder:"Série" %>
     </div>
   </div>
 
   <div class="actions mt-4">
-    <%= f.submit "Publiez le resume", class:"bg-blue-500 p-2 font-bold rounded-md " %>
+    <%= f.submit "Publiez maintenant", class:"bg-blue-400 p-2 font-bold rounded-md " %>
   </div>
   </div>
 <% end %>

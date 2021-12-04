@@ -9,7 +9,7 @@
       </div>
 
         <!-- Student onglets-->
-      <% if :student? %>
+      <% if user_role?(current_user) ==  :student? %>
         <div class="block md:hidden">
           <button class="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white" type="button" data-bs-toggle="collapse" data-bs-target="#Abonnez" aria-controls="LnNavbar" aria-expanded="false" aria-label="Toggle navigation">
           S'abonnez
@@ -43,7 +43,7 @@
           <% end %>
         </div>
         <!-- Teacher onglets-->
-        <% if :teacher? %>
+        <% if user_role?(current_user) != ":student?"  %>
         <div class="nav-item md:ml-48">
           <%= link_to lesson_path, class:'nav-link text-black font-bold' do %>
             <span class=""><i class="fa fa-plus-circle"></i> Créations </span>  

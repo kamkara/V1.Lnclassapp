@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_104424) do
+ActiveRecord::Schema.define(version: 2021_12_02_172608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -54,6 +54,17 @@ ActiveRecord::Schema.define(version: 2021_11_23_104424) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "answered_questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "answer_id", null: false
+    t.uuid "question_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.uuid "result_id", null: false
+    t.index ["answer_id"], name: "index_answered_questions_on_answer_id"
+    t.index ["question_id"], name: "index_answered_questions_on_question_id"
+    t.index ["result_id"], name: "index_answered_questions_on_result_id"
+  end
+
   create_table "answers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.text "content"
     t.boolean "correct_answer"
@@ -61,15 +72,6 @@ ActiveRecord::Schema.define(version: 2021_11_23_104424) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
-  end
-
-  create_table "answsered_questions", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "answer_id", null: false
-    t.uuid "question_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["answer_id"], name: "index_answsered_questions_on_answer_id"
-    t.index ["question_id"], name: "index_answsered_questions_on_question_id"
   end
 
   create_table "classroom_admins", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -119,15 +121,20 @@ ActiveRecord::Schema.define(version: 2021_11_23_104424) do
     t.index ["user_id"], name: "index_courses_on_user_id"
   end
 
+  create_table "courses_exercices", id: false, force: :cascade do |t|
+    t.uuid "course_id", null: false
+    t.uuid "exercice_id", null: false
+  end
+
   create_table "exercices", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "slug"
     t.boolean "published"
-    t.uuid "classroom_id", null: false
+    t.uuid "course_id", null: false
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["classroom_id"], name: "index_exercices_on_classroom_id"
+    t.index ["course_id"], name: "index_exercices_on_course_id"
     t.index ["user_id"], name: "index_exercices_on_user_id"
   end
   
@@ -225,9 +232,10 @@ ActiveRecord::Schema.define(version: 2021_11_23_104424) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answered_questions", "answers"
+  add_foreign_key "answered_questions", "questions"
+  add_foreign_key "answered_questions", "results"
   add_foreign_key "answers", "questions"
-  add_foreign_key "answsered_questions", "answers"
-  add_foreign_key "answsered_questions", "questions"
   add_foreign_key "classroom_admins", "classrooms"
   add_foreign_key "classroom_admins", "users"
   add_foreign_key "classrooms", "levels"
@@ -236,7 +244,7 @@ ActiveRecord::Schema.define(version: 2021_11_23_104424) do
   add_foreign_key "courses", "levels"
   add_foreign_key "courses", "materials"
   add_foreign_key "courses", "users"
-  add_foreign_key "exercices", "classrooms"
+  add_foreign_key "exercices", "courses"
   add_foreign_key "exercices", "users"
   add_foreign_key "levels", "users"
   add_foreign_key "materials", "users"

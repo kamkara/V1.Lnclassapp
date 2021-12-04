@@ -9,13 +9,12 @@ class ExercicesController < ApplicationController
 
   # GET /exercices/1 or /exercices/1.json
   def show
-    
   end
 
   # GET /exercices/new
   def new
-    @classroom = Classroom.friendly.find(params[:classroom_id])#finder classroom_id
-    @exercice = @classroom.exercices.build()   
+    @feed_course = Course.friendly.find(params[:course_id])#finder course_id
+    @exercice = @feed_course.exercices.build()   
   end
 
   # GET /exercices/1/edit
@@ -31,7 +30,7 @@ class ExercicesController < ApplicationController
 
   def publish
     @exercice = Exercice.friendly.find(params[:id])
-    redirect_to classroom_path(@exercice.classroom) and return if @exercice.update(published: true)
+    redirect_to course_path(@exercice.course) and return if @exercice.update(published: true)
         
     flash.notice << [@exercice.errors.full_messages]
     redirect_back fallback_location: "/"
@@ -63,9 +62,8 @@ class ExercicesController < ApplicationController
       @exercice = Exercice.friendly.find(params[:id])
     end
     
-  
     # Only allow a list of trusted parameters through.
     def exercice_params
-      params.require(:exercice).permit(:name, :slug, :published, :classroom_id, :user_id)
+      params.require(:exercice).permit(:name, :slug, :published, :course_id, :user_id)
     end
 end

@@ -1,0 +1,8 @@
+ <% course.exercices.chrono.each do |q| %>
+    <% if q.completed_by(current_user) %>
+        <%= render partial: "completed_exercices", locals: {q: q} %>
+    <% else %>
+    
+        <%= render partial: "unattempted_exercices", locals: {q: q} %>
+    <% end %>
+<% end %>

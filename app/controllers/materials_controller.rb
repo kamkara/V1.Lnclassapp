@@ -7,9 +7,19 @@ class MaterialsController < ApplicationController
     #@materials = Material.all
   end
 
+
   # GET /materials/1 or /materials/1.json
   def show
+<<<<<<< HEAD
     
+=======
+    @materials = Material.all
+    if current_user.role == "Student"
+      @feed_courses = Course.where("level_id = ? and material_id = ?", @current_user.level_id, @material.id).order('created_at desc') and return 
+    else
+      @feed_courses = Course.all.order('created_at desc')  and return 
+    end
+>>>>>>> Dev
   end
 
   # GET /materials/new
@@ -27,7 +37,7 @@ class MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.save
-        format.html { redirect_to @material, notice: "Material was successfully created." }
+        format.html { redirect_to materials_path, notice: "Material was successfully created." }
         format.json { render :show, status: :created, location: @material }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +50,7 @@ class MaterialsController < ApplicationController
   def update
     respond_to do |format|
       if @material.update(material_params)
-        format.html { redirect_to @material, notice: "Material was successfully updated." }
+        format.html { redirect_to materials_path, notice: "Material was successfully updated." }
         format.json { render :show, status: :ok, location: @material }
       else
         format.html { render :edit, status: :unprocessable_entity }

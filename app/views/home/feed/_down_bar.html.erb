@@ -1,0 +1,17 @@
+
+<div class="mt-2 w-3/4 flex flex-wrap content-start text-sm">
+    <p class="mr-4 lg:mr-8"> 
+        <%= link_to course_path(course), class:"hover:text-black text-black no-underline" do %>
+             <i class="fas fa-chalkboard-teacher"></i> Voir Exercices  
+        <% end %>
+    </p>
+</div>
+<div class="mt-2 w-1/4 flex ">
+    <p class="mr-4">
+        <% if :students? %>
+            <i class="fas fa-chevron-right"></i> Traité
+        <% else %>
+            <i class="fas fa-users-class"></i> Créer exercice
+        <% end %>
+    </p>
+</div>

@@ -1,0 +1,10 @@
+<div class="card border m-2">
+    <%= link_to(new_exercice_result_path(q), class: " text-black") do %>
+        <div class="m-2 font-semibold">
+            <p><%= q.name %></p>
+        </div>
+        <div class="m-2 text-sm">
+            <p> <%= q.questions.count %> Questions</p>
+        </div>
+    <% end %>
+</div>

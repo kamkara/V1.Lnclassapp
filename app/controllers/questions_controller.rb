@@ -2,20 +2,11 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_question, only: %i[ show edit update destroy ]
 
-  # GET /questions or /questions.json
-  def index
-    @questions = Question.all
-  end
-
-  # GET /questions/1 or /questions/1.json
-  def show
-  end
-
   # GET /questions/new
   def new
     @exercice = Exercice.friendly.find(params[:exercice_id])
     @question = Question.new
-    3.times { @question.answers.build}
+    3.times {@question.answers.build}
   end
 
   # GET /questions/1/edit

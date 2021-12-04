@@ -1,13 +1,16 @@
-<div class="container">
-<p id="notice"><%= notice %></p>
-  <h2 class="title text-md font-bold">
-    <%= @course.title %>
-  </h2>
-  <div class="card rounded-md m-2">
-    <%= @course.content %>
+<div class="m-2">
+    <div class="w-full md:w-2/3">
+      <h2 class="font-semibold text-xl m-2"> <%= @course.title %> </h2>
+    </div>
+    <div class="card rounded-md md:w-2/3">
+      <div class="m-2 ">
+        <%= @course.content %>
+      </div>
+    </div>
+
+    <!-- Add exercices list for medium--->
+    <div class="card mt-2 md:w-2/3">
+      <div class="m-2">
+        <%= render partial: "courses/show_exercices",locals: {course: @course} %>
+    </div>
   </div>
-
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
-</div>

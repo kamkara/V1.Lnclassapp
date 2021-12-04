@@ -1,19 +1,37 @@
-<p id="notice"><%= notice %></p>
+<%= render "home/feed/navbar" %> 
 
-<p>
-  <strong>Title:</strong>
-  <%= @material.title %>
-</p>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @material.slug %>
-</p>
+<div class="grid grid-cols-1 mt-12 lg:mt-24 lg:grid-cols-4 lg:gap-3">
+    <!-- sidebar-->
+    <div class="lg:ml-28 col-span-1 ">
+       <div class="place-items-center">
+        <%= render "home/feed/sidebar" %>
+       </div>
+        <%= render "home/feed/terms" %>
+    </div>
+    <!-- feed content-->
+    <div class="col-span-2">
+        <div class="place-items-center">
+            <%= render "home/feed/feed" %>
+        </div>
+    </div>
+    <!-- better feed -->
+    <div class="hidden col-span-1 lg:block lg:mr-28 "> 
+        <div class="place-items-center">
+          <div class="hidden lg:block bg-white border border-2 border border-2 rounded-md">
+            <div class="h-8 bg-blue-300 ">
+                <p class="ml-1">
+                    <span class="relative inline-flex h-5 w-3 bg-red-400 animate"></span> <i class="fas fa-book-reader mb-1"></i>
+                    <span class="ml-2 text-md font-semibold">Informations</span>
+                </p>  
+            </div>
+            
+            <p class="m-2 text-sm"> <span class="font-semibold"> <%= @current_user.last_name %> </span>
+            Vous avez <br class="">
 
-<p>
-  <strong>User:</strong>
-  <%= @material.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_material_path(@material) %> |
-<%= link_to 'Back', materials_path %>
+                les Léçons et  exercices <br class=""><span class="font-semibold"><%= @material.title %></span> 
+            </p>
+          </div>
+        </div>
+    </div>
+</div>

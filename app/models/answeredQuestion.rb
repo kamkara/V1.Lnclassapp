@@ -1,4 +1,4 @@
-class AnswseredQuestion < ApplicationRecord
+class AnsweredQuestion < ApplicationRecord
   belongs_to :question
   belongs_to :answer, optional: true
   belongs_to :result

@@ -12,10 +12,10 @@ Rails.application.routes.draw do
   get "lesson", to:'courses#new'
   
   
-  resources :classrooms, only: [:index, :new, :create, :show] do
-    resources :exercices, only: [:new, :create, :show]
+  resources :courses do
+    resources :exercices, only: [:new, :create, :show, :index]
+    get "exercices", to:"exercices#index"
   end
-  get "les_exercices", to:"exercices#index"
   resources :exercices, except: [:new, :show, :edit, :create, :update, :destroy, :index] do
     member do
       delete 'delete', to: 'exercices#destroy'
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :results, only: [:new, :create]
   end
 
-  resources :exercices, :classrooms, :schools, :materials, :courses, :levels,  :questions
+  resources :exercices, :classrooms, :schools, :materials, :levels
 
   ######### USER DATA #########
   devise_scope :user do
