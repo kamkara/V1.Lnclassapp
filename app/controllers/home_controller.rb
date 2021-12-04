@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  #before_action :authenticate_user!, only: %i[index]
+  before_action :authenticate_user!, only: %i[index]
   before_action :find_levels
   before_action :find_materials
   

@@ -26,6 +26,8 @@
       </div>
       <!-- metadata -->
       <div class="bg-gray-200 text-sm flex font-bold">
+        
+      <!-- show exercices -->
         <div class="mt-2 w-3/4 flex flex-wrap content-start text-sm">
           <div class="mx-4 p-2 lg:mr-8"> 
             <%= link_to course_path(course), class:"hover:text-black text-black no-underline" do %>
@@ -33,12 +35,13 @@
             <% end %>
           </div>
         </div>
+      <!-- show  -->
         <div class="mt-2 w-1/4 flex ">
         <div class="mr-4 p-2">
           <% if :students? %>
             <i class="fas fa-chevron-right"></i> Traité
           <% else %>
-            <i class="fas fa-users-class"></i> Créer exercice
+            <i class="fas fa-users-class"></i>Voir Resultats
           <% end %>
         </div>
       </div>

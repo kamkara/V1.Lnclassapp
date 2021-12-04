@@ -1,7 +1,6 @@
 module ApplicationHelper
 
-     
-  #onglet title
+#Onglet title
 def title
  base_title = "Lnclass Education"
   if @title.nil?
@@ -34,27 +33,27 @@ end
   
 
   def user_greeting
-        if user_signed_in?
-          "#{user_comming}, #{current_user.first_name}"
-        else
-            ""   
-          end
+    if user_signed_in?
+      "#{user_comming}, #{current_user.first_name}"
+    else
+      ""   
     end
+  end
     
-    def user_comming
-      case Time.now.strftime("%H").to_i
-        when 1..11
-          "Bonjour"
-        when 12..
-            "Bonsoir"
-          else
-            'Bienvenue(e)'
-          end
+  def user_comming
+    case Time.now.strftime("%H").to_i
+      when 1..11
+        "Bonjour"
+      when 12..
+        "Bonsoir"
+      else
+        'Bienvenue(e)'
     end
+  end
     
     
 #USER NOTICE
-    def bootstrap_class_for_flash(flash_type)
+  def bootstrap_class_for_flash(flash_type)
     case flash_type
     when 'success'
       'alert-success'
@@ -69,14 +68,18 @@ end
     end
   end
 
-  def teacher?(current_user)
-    current_user.role == "Teacher"
+  #role
+  def user_role?(current_user)
+    case current_user.role
+    when "Student"
+      ":student?"
+    when "Teacher"
+      ":Teacher?"
+    when "Team"
+      "Team?"
+    else
+      ""
+    end
   end
-
-  def student?(current_user)
-     current_user.role == "Student"
-  end
-  def team?(current_user)
-    current_user.role == "Team"
-  end
+  
 end
