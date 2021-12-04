@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     resources :results, only: [:new, :create]
   end
 
-  resources :exercices, :classrooms, :schools, :materials, :levels,:questions
+  resources :exercices, :classrooms, :schools, :materials, :levels
 
   ######### USER DATA #########
   devise_scope :user do
