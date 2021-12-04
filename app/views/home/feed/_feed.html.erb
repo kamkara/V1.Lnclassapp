@@ -1,9 +1,7 @@
 <% @feed_courses.each do |course| %>
   <div class="bg-white rounded-md mb-2">
     <div class="mx-2 py-2">
-      
-
-      <div class='flex items-center px-5 py-3'>
+        <div class='flex items-center px-5 py-3'>
             <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://i.pravatar.cc/200?u=007'>
             <div class='mx-3'>
               <p class=' font-medium text-gray-600 '>
@@ -27,8 +25,24 @@
         </div>
       </div>
       <!-- metadata -->
-      <div class="bg-gray-200 text-sm flex">
-        <%= render "home/feed/down_bar.html.erb" %>
+      <div class="bg-gray-200 text-sm flex font-bold">
+        <div class="mt-2 w-3/4 flex flex-wrap content-start text-sm">
+          <div class="mx-4 p-2 lg:mr-8"> 
+            <%= link_to course_path(course), class:"hover:text-black text-black no-underline" do %>
+              <i class="fas fa-chalkboard-teacher"></i> Exercices  
+            <% end %>
+          </div>
+        </div>
+        <div class="mt-2 w-1/4 flex ">
+        <div class="mr-4 p-2">
+          <% if :students? %>
+            <i class="fas fa-chevron-right"></i> Traité
+          <% else %>
+            <i class="fas fa-users-class"></i> Créer exercice
+          <% end %>
+        </div>
+      </div>
+
       </div>
     </div>
   </div>

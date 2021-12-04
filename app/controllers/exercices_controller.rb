@@ -9,13 +9,12 @@ class ExercicesController < ApplicationController
 
   # GET /exercices/1 or /exercices/1.json
   def show
-    
   end
 
   # GET /exercices/new
   def new
-    @find_course = Course.friendly.find(params[:course_id])#finder course_id
-    @exercice = @find_course.exercices.build()   
+    @feed_course = Course.friendly.find(params[:course_id])#finder course_id
+    @exercice = @feed_course.exercices.build()   
   end
 
   # GET /exercices/1/edit
