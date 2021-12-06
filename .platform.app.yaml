@@ -21,6 +21,7 @@ mounts:
     source: local
     source_path: uploads
     
+disk: 1024
 
 # The relationships of the application with services or other applications.
 #
