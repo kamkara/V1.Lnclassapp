@@ -1,6 +1,6 @@
 
       # The name of this app. Must be unique within a project.
-name: app
+name: lnclassapp
 
 # The runtime the application uses. The 'type' key defines the base container
 # image that will be used to run the application. There is a separate base
@@ -8,7 +8,7 @@ name: app
 # in multiple versions. Check the Ruby documentation
 # (https://docs.platform.sh/languages/ruby.html#supported-versions)
 # to find the supported versions for the 'ruby' type.
-type: 'ruby:3.0'
+type: 'ruby:2.7.2'
       
 
 # The following block defines a single writable directory, 'web/uploads'
