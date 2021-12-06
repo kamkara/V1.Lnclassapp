@@ -8,7 +8,7 @@ name: lnclassapp
 # in multiple versions. Check the Ruby documentation
 # (https://docs.platform.sh/languages/ruby.html#supported-versions)
 # to find the supported versions for the 'ruby' type.
-type: 'ruby:2.7.2'
+type: 'ruby:3.0'
       
 
 # The following block defines a single writable directory, 'web/uploads'
