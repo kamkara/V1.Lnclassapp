@@ -7,8 +7,6 @@ ruby '3.0.2'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '1.1'
-# Use Puma as the app server
-gem 'puma', '5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -36,11 +34,15 @@ gem 'devise', '~> 4.8'
 gem 'pundit', '~> 2.1', '>= 2.1.1'
 gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.7'
 
-
+group :production do
+  gem "unicorn", " 6.0" 
+end
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
+  # Use Puma as the app server
+  gem 'puma', '5.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

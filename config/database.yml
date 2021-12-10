@@ -17,6 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  port: 5432
   
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
@@ -45,7 +46,6 @@ development:
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -86,5 +86,5 @@ test:
 production:
   <<: *default
   database: Lnclassapp_production
-  username: V1_Lnclassapp
+  username: Lnclassapp
   password: <%= ENV['LNCLASSAPP_DATABASE_PASSWORD'] %>
