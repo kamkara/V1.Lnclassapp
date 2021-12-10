@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: V1_Lnclassapp_production
+  database: Lnclassapp_production
   username: V1_Lnclassapp
-  password: <%= ENV['V1_LNCLASSAPP_DATABASE_PASSWORD'] %>
+  password: <%= ENV['LNCLASSAPP_DATABASE_PASSWORD'] %>
