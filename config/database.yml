@@ -84,19 +84,16 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+
 production:
-  <<: *default
-  host: database.internal
+  adapter: postgresql
+  encoding: unicode
   database: main
   username: main
-  password: <%= ENV['LNCLASSAPP_DATABASE_PASSWORD'] %>
+  password: main
+  host: database.internal
+  port: 5432
   timeout: 5000
 #  # For details on connection pooling, see Rails configuration guide
 #  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-  #password: main
-  #database: Lnclassapp_production
-  #username: Lnclassapp
-  #adapter: postgresql
-  #encoding: unicode
