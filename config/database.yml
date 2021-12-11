@@ -14,6 +14,7 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
+
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -85,6 +86,17 @@ test:
 #
 production:
   <<: *default
-  database: Lnclassapp_production
-  username: Lnclassapp
-  password: <%= ENV['LNCLASSAPP_DATABASE_PASSWORD'] %>
+  database: main
+  username: main
+  password: main
+  timeout: 5000
+  host: database.internal
+#  # For details on connection pooling, see Rails configuration guide
+#  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+  #database: Lnclassapp_production
+  #username: Lnclassapp
+  #password: <%= ENV['LNCLASSAPP_DATABASE_PASSWORD'] %>
+  #adapter: postgresql
+  #encoding: unicode
