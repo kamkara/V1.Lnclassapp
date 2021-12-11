@@ -86,17 +86,17 @@ test:
 #
 production:
   <<: *default
+  #host: database.internal
   database: main
   username: main
-  password: main
+  password: <%= ENV['LNCLASSAPP_DATABASE_PASSWORD'] %>
   timeout: 5000
-  host: database.internal
 #  # For details on connection pooling, see Rails configuration guide
 #  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+  #password: main
   #database: Lnclassapp_production
   #username: Lnclassapp
-  #password: <%= ENV['LNCLASSAPP_DATABASE_PASSWORD'] %>
   #adapter: postgresql
   #encoding: unicode
