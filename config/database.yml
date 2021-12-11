@@ -86,7 +86,7 @@ test:
 #
 production:
   <<: *default
-  #host: database.internal
+  host: database.internal
   database: main
   username: main
   password: <%= ENV['LNCLASSAPP_DATABASE_PASSWORD'] %>
