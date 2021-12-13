@@ -3,6 +3,13 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.hosts << "www.lnclass.com"
+  config.hosts << "lnclass.com"
+  config.hosts << "www.lnclasse.com"
+  config.hosts << "lnclasse.com"
+  config.hosts << "www.main-bvxea6i-fwuffjhrpmvws.uk-1.platformsh.site"
+
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
