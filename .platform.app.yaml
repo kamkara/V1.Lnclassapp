@@ -11,31 +11,6 @@ name: lnclass
 type: 'ruby:3.0'
       
 
-# The following block defines a single writable directory, 'web/uploads'
-# The 'source' specifies where the writable mount is. The 'local' source
-# indicates that the mount point will point to a local directory on the
-# application container. The 'source_path' specifies the subdirectory
-# from within the source that the mount should point at. 
-#mounts:
-#  'web/uploads':
-#    source: local
-#    source_path: uploads
-
-mounts:
-    "/log":
-        source: local
-        source_path: log
-    "/storage":
-        source: local
-        source_path: storage
-    "/tmp":
-        source: local
-        source_path: tmp
-
-
-    
-disk: 1024
-
 # The relationships of the application with services or other applications.
 #
 # The left-hand side is the name of the relationship as it will be exposed
@@ -48,20 +23,41 @@ relationships:
 hooks:
     build: |
       bundle install
-      touch /app/log/production.log
-      chmod 0664 /app/log/production.log
+      
     deploy: |
       RACK_ENV=production bundle exec rake db:migrate
 
-web:
-  upstream: 
-    socket_family: "unix"
-  commands: 
-    start: "\"unicorn -l $SOCKET -E production config.ru\""
-  locations: 
-    '/': 
-      root: "\"public\""
-      passthru: true
-      expires: "1h"
-      allow: true
 
+# The following block defines a single writable directory, 'web/uploads'
+# The 'source' specifies where the writable mount is. The 'local' source
+# indicates that the mount point will point to a local directory on the
+# application container. The 'source_path' specifies the subdirectory
+# from within the source that the mount should point at. 
+
+
+mounts:
+    "/log":
+        source: local
+        source_path: log
+    "/storage":
+        source: local
+        source_path: storage
+    "/tmp":
+        source: local
+        source_path: tmp
+
+web:
+    upstream:
+        socket_family: unix
+    commands:
+        start: "bundle exec unicorn -l $SOCKET"
+
+    locations:
+        "/":
+            root: "public"
+            passthru: true
+            expires: 1h
+            allow: true
+
+    
+disk: 1024
