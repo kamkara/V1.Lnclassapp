@@ -22,6 +22,7 @@ relationships:
 
 hooks:
     build: |
+      gem install bundler:2.2.33
       bundle install
       
     deploy: |
