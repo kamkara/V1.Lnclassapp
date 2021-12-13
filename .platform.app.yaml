@@ -35,6 +35,8 @@ relationships:
 hooks:
     build: |
       bundle install
+      touch /app/log/production.log
+      chmod 0664 /app/log/production.log
     deploy: |
       RACK_ENV=production bundle exec rake db:migrate
 
