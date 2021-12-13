@@ -92,8 +92,6 @@ production:
   username: main
   password: main
   host: postgresdatabase.internal
-  port: 5432
-  timeout: 5000
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
