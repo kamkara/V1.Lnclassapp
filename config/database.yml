@@ -91,7 +91,7 @@ production:
   database: main
   username: main
   password: main
-  host: localhost
+  host: database.internal
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
