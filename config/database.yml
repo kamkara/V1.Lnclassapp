@@ -91,8 +91,7 @@ production:
   database: main
   username: main
   password: main
-  port: 5433
-  host: localhost
+  host: postgresdatabase.internal
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
