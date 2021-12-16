@@ -88,12 +88,13 @@ test:
 production:
   adapter: postgresql
   encoding: unicode
-  host: localhost
   database: main
   username: main
   password: main
+  #host: localhost
   #host: postgresdatabase.internal
   port: 5432
+  host:     <%= ENV['POSTGRESQL_ADDON_HOST'] || 'localhost' %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
