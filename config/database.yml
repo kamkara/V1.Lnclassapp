@@ -92,9 +92,8 @@ production:
   username: main
   password: main
   #host: localhost
-  #host: postgresdatabase.internal
+  host: postgresdatabase.internal
   port: 5432
-  host:     <%= ENV['POSTGRESQL_ADDON_HOST'] || 'localhost' %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 
