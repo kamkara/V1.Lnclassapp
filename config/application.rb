@@ -14,7 +14,6 @@ module V1Lnclassapp
     config.hosts << "www.lnclass.com"
     config.hosts << "lnclass.com"
     config.hosts << "www.main-bvxea6i-4aqgsifxsdsmw.uk-1.platformsh.site"
-    config.hosts <<  "7msgbfpwdqtlhlklrdffmmddui.dbpostgres.service._.uk-1.platformsh.site"
 
     # Configuration for the application, engines, and railties goes here.
     #
