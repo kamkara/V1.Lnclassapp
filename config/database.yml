@@ -93,7 +93,8 @@ production:
   host: postgresdatabase.internal
   port: 5432
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#     url: <%= ENV['MY_APP_DATABASE_URL'] %>
+ url: main
+ #url: <%= ENV['MY_APP_DATABASE_URL'] %>
 
 #  # For details on connection pooling, see Rails configuration guide
 #  # https://guides.rubyonrails.org/configuring.html#database-pooling
