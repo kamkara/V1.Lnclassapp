@@ -35,6 +35,8 @@ hooks:
 # application container. The 'source_path' specifies the subdirectory
 # from within the source that the mount should point at. 
 
+    
+disk: 1024
 
 mounts:
     "/log":
@@ -49,7 +51,9 @@ mounts:
 
 web:
     upstream:
-        socket_family: unix
+        socket_family: tcp
+        protocol: http
+        #ocket_family: unix
     commands:
         start: "bundle exec unicorn -l $SOCKET"
 
@@ -60,5 +64,3 @@ web:
             expires: 1h
             allow: true
 
-    
-disk: 1024
