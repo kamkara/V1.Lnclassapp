@@ -51,9 +51,7 @@ mounts:
 
 web:
     upstream:
-        socket_family: tcp
-        protocol: http
-        #ocket_family: unix
+        socket_family: unix
     commands:
         start: "bundle exec unicorn -l $SOCKET"
 
