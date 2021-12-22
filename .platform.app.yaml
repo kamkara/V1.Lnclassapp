@@ -10,28 +10,8 @@ disk: 1024
 
 hooks:
     build: |
-        set -e
-        echo "Installing NVM $NVM_VERSION"
-        unset NPM_CONFIG_PREFIX
-        export NVM_DIR="$PLATFORM_APP_DIR/.nvm"
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM_VERSION/install.sh | bash
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-        export BUNDLER_VERSION="$(grep -A 1 "BUNDLED WITH" Gemfile.lock | tail -n 1)" || $DEFAULT_BUNDLER_VERSION
-        echo "Install bundler $BUNDLER_VERSION"
-        gem install --no-document bundler -v $BUNDLER_VERSION
-        echo "Installing gems"
-        [ -d "$PLATFORM_CACHE_DIR/bundle" ] && \
-            rsync -az --delete "$PLATFORM_CACHE_DIR/bundle/" vendor/bundle/
-        mkdir -p "$PLATFORM_CACHE_DIR/bundle"
-        bundle install     
-        rsync -az --delete vendor/bundle/ "$PLATFORM_CACHE_DIR/bundle/"
-        echo "Precompiling assets"                
-        mkdir -p "$PLATFORM_CACHE_DIR/webpacker"
-        mkdir -p "$RAILS_TMP/cache/webpacker"
-        [ -d "$PLATFORM_CACHE_DIR/webpacker" ] && \
-            rsync -az --delete "$PLATFORM_CACHE_DIR/webpacker/" $RAILS_TMP/cache/webpacker/
-        SECRET_KEY_BASE=1 bundle exec rails assets:precompile
-        rsync -az --delete $RAILS_TMP/cache/webpacker/ "$PLATFORM_CACHE_DIR/webpacker/"        
+        gem install --no-document bundler bundler:2.2.33
+        bundle install        
     deploy: |
         RACK_ENV=production bundle exec rake db:migrate
 
