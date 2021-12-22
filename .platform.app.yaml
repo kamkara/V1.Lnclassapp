@@ -1,4 +1,4 @@
-name: 'app'
+name: 'lnclassapp'
 type: "ruby:3.0"
 
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
         yarn: "*"
 
 relationships:
-    database: "database:mysql"
+    postgresdatabase: 'dbpostgres:postgresql'
 
 disk: 1024
 
