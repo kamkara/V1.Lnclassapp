@@ -33,6 +33,6 @@ Course.all.with_rich_text_content_and_embeds # Preload both body and attachments
 
   def slugged_custom
     #Apprendre-a-calculer-les-limites-math-tleD
-    "#{title} #{material.title} #{level.title}"
+    "#{title}" ##{material.title} #{level.title}
   end
 end
