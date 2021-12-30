@@ -10,16 +10,13 @@ class MaterialsController < ApplicationController
 
   # GET /materials/1 or /materials/1.json
   def show
-<<<<<<< HEAD
-    
-=======
     @materials = Material.all
     if current_user.role == "Student"
       @feed_courses = Course.where("level_id = ? and material_id = ?", @current_user.level_id, @material.id).order('created_at desc') and return 
     else
       @feed_courses = Course.all.order('created_at desc')  and return 
     end
->>>>>>> Dev
+
   end
 
   # GET /materials/new
